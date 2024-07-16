@@ -1,45 +1,46 @@
-## Deploy JSON Server to Vercel
+# Customer Transaction Data Visaulization
 
-A template to deploy [JSON Server](https://github.com/typicode/json-server) to [Vercel](https://vercel.com), allow you to run fake REST API online!
+This project uses `json-server` to create an API from the JSON file that holds the customer transaction data. It also uses the template repository [`kitloong/json-server-vercel`](https://github.com/kitloong/json-server-vercel) that deploys the API to Vercel.
 
-Demo from this repository: 
+## API Endpoints
 
-1. https://json-server-in.vercel.app
-2. https://json-server-in.vercel.app/api/posts
+1. For Customers: <https://jobfair-task-w6uv.vercel.app/customers>
+2. For Transactions: <https://jobfair-task-w6uv.vercel.app/transactions>
 
-![Powered by Vercel](https://images.ctfassets.net/e5382hct74si/78Olo8EZRdUlcDUFQvnzG7/fa4cdb6dc04c40fceac194134788a0e2/1618983297-powered-by-vercel.svg)
+## Data Visualization
 
-### How to use
+The project also uses chart.js library to plot and visaulize the data.
 
-1. Click "**Use this template**" or clone this repository.
-2. Update or use the default [`db.json`](./db.json) in the repository.
-3. Sign Up or login into [Vercel](https://vercel.com).
-4. From the Vercel dashboard, click "**+ New Project**" then "**Import**" your repository.
-5. In the "**Configure Project**" screen, leave everything default and click "**Deploy**".
-6. Wait until deployment is done, and your own JSON server is ready to serve!
+## How To Run Locally
 
-## Default `db.json`
+To run the project locally:
 
-```json
-{
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
-}
+1. **Prerequisites**: Ensure that [Node.js](https://nodejs.org/en/download) and [Git](https://git-scm.com/downloads) are installed on your machine.
+
+2. **Clone the Repository**: Open your terminal or command prompt and run the following command:
+
+```bash
+git clone https://github.com/MohamedEmary/jobfair-task.git
 ```
 
-## Enable write operations
+3. **Install Dependencies**: Change to the project directory and install the dependencies:
 
-By default, only GET operation is allowed, thanks to the contribution by [@VicAv99](https://www.github.com/VicAv99) at [#6](https://github.com/kitloong/json-server-vercel/issues/6), we can now enable write operations as well.
+```bash
+cd jobfair-task
+npm install
+```
 
-You can find the example code in [`api/server.js`](./api/server.js).
+4. **Run the JSON Server**:
 
-## Reference
+```bash
+json-server --port 3000 db.json
+```
 
-1. https://github.com/typicode/json-server
-2. https://vercel.com
-3. https://shadowsmith.com/how-to-deploy-an-express-api-to-vercel
+1. **Update API Endpoints**: In the `public/app.js` file, update the API endpoints as follows:
+
+```js
+fetch("http://localhost:3000/customers")
+fetch("http://localhost:3000/transactions")
+```
+
+6. **Open the Application**: Finally, open the `public/index.html` file in your browser.
