@@ -2,24 +2,16 @@ let customers = [];
 let transactions = [];
 let chart = null;
 
-function fetchData() {
-  Promise.all([
-    fetch("https://jobfair-task-w6uv.vercel.app/customers"),
-    fetch("https://jobfair-task-w6uv.vercel.app/transactions"),
-  ])
-    .then((responses) => Promise.all(responses.map((res) => res.json())))
-    .then(([customersData, transactionsData]) => {
-      customers = customersData.map((customer) => ({
-        ...customer,
-        id: parseInt(customer.id),
-      }));
-      transactions = transactionsData.map((transaction) => ({
-        ...transaction,
-        id: parseInt(transaction.id),
-      }));
+async function fetchData() {
+  customers = await fetch(
+    "https://jobfair-task-w6uv.vercel.app/customers"
+  ).then((res) => res.json());
 
-      updateTable();
-    });
+  transactions = await fetch(
+    "https://jobfair-task-w6uv.vercel.app/transactions"
+  ).then((res) => res.json());
+
+  updateTable();
 }
 
 function updateTable() {
