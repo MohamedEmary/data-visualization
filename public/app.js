@@ -4,8 +4,8 @@ let chart = null;
 
 function fetchData() {
   Promise.all([
-    fetch("http://localhost:3000/customers"),
-    fetch("http://localhost:3000/transactions"),
+    fetch("https://jobfair-task-w6uv.vercel.app/customers"),
+    fetch("https://jobfair-task-w6uv.vercel.app/transactions"),
   ])
     .then((responses) => Promise.all(responses.map((res) => res.json())))
     .then(([customersData, transactionsData]) => {
