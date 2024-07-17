@@ -2,6 +2,9 @@
 
 This project uses `json-server` to create an API from the JSON file that holds the customer transaction data. It also uses the template repository [`kitloong/json-server-vercel`](https://github.com/kitloong/json-server-vercel) that deploys the API to Vercel.
 
+> [!TIP]
+> ***To show the graph of a user just click on the user row on the table***
+
 ## API Endpoints
 
 1. For Customers: <https://jobfair-task-w6uv.vercel.app/customers>
