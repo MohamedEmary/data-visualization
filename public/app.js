@@ -1,3 +1,5 @@
+"use strict";
+
 let customers = [];
 let transactions = [];
 let chart = null;
@@ -61,15 +63,15 @@ function showChart(customer) {
     chart.destroy();
   }
 
-  const ctx = document.getElementById("transactionChart").getContext("2d");
-  chart = new Chart(ctx, {
+  const canvas = document.getElementById("transactionChart");
+  chart = new Chart(canvas, {
     type: "line",
     data: {
-      labels: chartData.map((d) => d.date),
+      labels: chartData[0],
       datasets: [
         {
           label: "Transaction Amount",
-          data: chartData.map((d) => d.amount),
+          data: chartData[1],
           borderColor: "rgb(75, 192, 192)",
           tension: 0.1,
         },
@@ -87,13 +89,11 @@ function showChart(customer) {
 }
 
 function prepareChartData(transactions) {
-  const chartData = [];
-  let transactionCopy = structuredClone(transactions);
+  const chartData = [[], []];
 
-  transactionCopy.forEach((transaction) => {
-    delete transaction.id;
-    delete transaction.customer_id;
-    chartData.push(transaction);
+  transactions.forEach((transaction) => {
+    chartData[0].push(transaction.date);
+    chartData[1].push(transaction.amount);
   });
 
   return chartData;
