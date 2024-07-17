@@ -1,4 +1,4 @@
-# Customer Transaction Data Visaulization
+# Customer Transaction Data Visualization
 
 This project uses `json-server` to create an API from the JSON file that holds the customer transaction data. It also uses the template repository [`kitloong/json-server-vercel`](https://github.com/kitloong/json-server-vercel) that deploys the API to Vercel.
 
