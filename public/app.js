@@ -87,15 +87,16 @@ function showChart(customer) {
 }
 
 function prepareChartData(transactions) {
-  const chartData = {};
-  transactions.forEach((transaction) => {
-    if (chartData[transaction.date]) {
-      chartData[transaction.date] += transaction.amount;
-    } else {
-      chartData[transaction.date] = transaction.amount;
-    }
+  const chartData = [];
+  let transactionCopy = structuredClone(transactions);
+
+  transactionCopy.forEach((transaction) => {
+    delete transaction.id;
+    delete transaction.customer_id;
+    chartData.push(transaction);
   });
-  return Object.entries(chartData).map(([date, amount]) => ({ date, amount }));
+
+  return chartData;
 }
 
 document.getElementById("nameFilter").addEventListener("input", updateTable);
